@@ -1,0 +1,53 @@
+<meta charset = "utf-8">
+<head> 
+    <link rel = "stylesheet" href = "index.css"/>
+</head>
+
+
+<h1 id = "hello">  안녕하세요 </h1>
+
+<img id = "myImage" src="" alt = "My Image">
+<button onclick = "changeImage()"> Change Image </button>
+
+<hr> <br>
+
+<button onclick = "inputBoxLoad('id-box')" style = "font-size: 30;"> 버튼1 </button>
+
+<button onclick = "inputBoxLoad('password-box')" style = "font-size: 30;"> 버튼2 </button>
+
+<div class='alert-box' Id = 'id-box' style = "display: none;">  아이디를 입력하세요 
+</div>
+
+<div class='alert-box' Id = 'password-box' style = "display: none;">  비밀번호를 입력하세요
+</div>
+
+<p class = "title1"> 테스트 1 </p>
+<p class = "title1"> 테스트 2 </p>
+
+
+<script>
+    document.getElementsByClassName('title1')[0].innerHTML = "안녕녕";
+    document.getElementsByClassName('title1')[1].innerHTML = "안녕녕녕녕녕";
+    document.getElementsByClassName("title1")[0].style.color = "blue";
+
+    document.getElementById('hello').innerHTML = "곤니치와";
+
+    document.getElementById('hello').style.color= 'blue';
+
+    document.getElementById('hello').style.fontSize = '50px';
+
+
+    function changeImage(){
+        var imgElement = document.getElementById("myImage");
+        imgElement.src = "src/123.jpeg"; // 이미지 파일의 경로를 바꾸세요
+    }
+
+    function inputBoxLoad(Id){
+        if(document.getElementById(Id).style.display == 'none'){
+            document.getElementById(Id).style.display = 'block';
+        } else {
+            document.getElementById(Id).style.display = 'none';
+        }  
+    }
+
+</script>
