@@ -15,14 +15,22 @@
                 <span class = "navbar-toggler-icon"></span>
             </button>
         </div>
-    </nav>    
+    </nav>
+    
+    <div class = 'test1'> 안녕하세요 </div>
+    <div id = 'test1'> 안녕하세요 </div> 
 
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        document.getElementsByClassName('navbar-toggler')[0].addEventListener('click',function(){
+            document.getElementsByClassName('list-group')[0].classList.toggle('show');
+        });
 
+        document.querySelector('.test1').innerHTML = '곤니치하';
+        document.querySelector('#test1').innerHTML = '곤니치하하';
     </script>
 </body>
 </html>
