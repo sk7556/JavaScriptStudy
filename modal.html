@@ -32,8 +32,10 @@
 
     <script>
 
+        // 모달 창 열기 
         document.querySelector('.openModal').addEventListener('click', function () {
-            document.querySelector('.white-bg').classList.toggle('show');
+            $('.white-bg').fadeIn(); // function 안에도 jQuery 구현 가능 
+            document.querySelector('.white-bg').classList.toggle('show');            
         });
 
         /* jQuery 사용 */
