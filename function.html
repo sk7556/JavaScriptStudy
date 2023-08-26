@@ -9,7 +9,7 @@
 <body>
     
     <form action = "">
-        <input type = "text"
+        <input type = "text" name = "369" id = "369">
 
 
     </form>
@@ -30,13 +30,19 @@
         // 3의 배수인 경우 alert을 띄우는 경우 
         function searchMultiple(number){
             if(number % 3 == 0 ){
-                // 3의 배수인 경우
-                alert("짝!");
+                // 3의 배수인 경우                
+                console.log(number + "짝!")
             } else {
                 // 3의 배수가 아닌경우 아무일도 없었다
-
+                console.log(number + "패스");    
             }
-        }
+        }        
+
+        let input369 = document.getElementById('369');
+        input369.addEventListener('input',function(){
+                   
+            searchMultiple(input369.value);
+        })
 
 
     </script>
