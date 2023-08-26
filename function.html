@@ -9,8 +9,15 @@
 <body>
     
     <form action = "">
-        <input type = "text" name = "369" id = "369">
+        <input type = "text" name = "369" id = "369" placeholder="369 박수">
 
+        <p> 아래는 시험 점수 </p>
+        <p> 1번 시험 + 2번 시험이 합계 120점 이상이면 합격,</p>
+        <p> 한 과목 40점 이하면 과락 </p>
+        <input type = "text" id = "1번시험" placeholder="1번시험">
+        <input type = "text" id = "2번시험" placeholder="2번시험">
+        <br>
+        <span class = "passOrNot"> 합격 or 불합격 </span>
 
     </form>
 
@@ -29,20 +36,47 @@
     <script>
         // 3의 배수인 경우 alert을 띄우는 경우 
         function searchMultiple(number){
-            if(number % 3 == 0 ){
-                // 3의 배수인 경우                
-                console.log(number + "짝!")
-            } else {
+            if(number % 9 == 0 ){
+                // 9의 배수인 경우                
+                console.log(number + "짝짝!")
+            } else if (number % 3 == 0){
                 // 3의 배수가 아닌경우 아무일도 없었다
-                console.log(number + "패스");    
+                console.log(number + "짝!")
+                  
+            } else {
+                console.log(number + "패스"); 
             }
         }        
-
+        // input 들어오면 확인하기  
         let input369 = document.getElementById('369');
         input369.addEventListener('input',function(){
-                   
             searchMultiple(input369.value);
         })
+
+        // 시험 점수 2개를 받아 1과목 40점 미만이면 과락, 합산 120점 이상이면 합격 
+        function examScore(score1, score2){
+            let result = "불합격";
+            if(score1 > 39 && score2 > 39 ){ // 1번 조건, 둘 다 40점 이상이어야 합격                 
+                if(parseInt(score1)+parseInt(score2) > 120){                    
+                    result = "합격";
+                }
+            }
+            return result;
+        }
+        // jQuery 로 이벤트리스너 구현해보자 
+        let inputScore1 = $('#1번시험');
+        let inputScore2 = $('#2번시험');
+        let Score1 = inputScore1.val();
+        let Score2 = inputScore2.val();
+
+        inputScore1.on('input',function(){
+            let result = examScore($('#1번시험').val(), $('#2번시험').val());
+            $('.passOrNot').html(result);
+        });
+        inputScore2.on('input',function(){
+            let result = examScore($('#1번시험').val(), $('#2번시험').val());
+            $('.passOrNot').html(result);
+        });
 
 
     </script>
