@@ -22,11 +22,12 @@
         const data = []
         data.push({
             "role": "system",
-            "content": "assistant는 점시간 메뉴를 추천해주는 요리사입니다."
+            "content": "assistant는 지역의 유명 가게이름 3개 나열 "
         })
 
         const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`
         
+
         $button.addEventListener('click', e => {
             e.preventDefault()
             const contents = $input.value

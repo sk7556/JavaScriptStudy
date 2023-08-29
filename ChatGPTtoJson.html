@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT Example</title>
+</head>
+<body>
+    <div id="chat-container"></div>
+    <input type="text" id="user-input" placeholder="Type your message">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (message === '') return;
+
+            const response = await fetchChat(message);
+            displayMessage(message, 'user');
+            displayMessage(response.choices[0].message.content, 'bot');
+
+            userInput.value = '';
+        }
+
+        async function fetchChat(userMessage) {
+            const apiKey = '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'; // Jungsik API Key
+            // const endpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions';
+            const endpoint = 'https://api.openai.com/v1/chat/completions'; // 잘안된다 여기는 
+
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    prompt: userMessage,
+                    max_tokens: 50 // You can adjust this token limit
+                })
+            });
+
+            return response.json();
+        }
+
+        function displayMessage(content, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add(sender);
+            messageElement.innerText = content;
+
+            chatContainer.appendChild(messageElement);
+        }
+
+    </script>
+</body>
+</html>
