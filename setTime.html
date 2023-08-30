@@ -1,0 +1,50 @@
+// fetch 에 로딩화면을 적용시키기위한 script 실험 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading Screen Example</title>
+<style>
+  /* Style for the loading screen */
+  .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    z-index: 9999;
+  }
+</style>
+</head>
+<body>
+  <!-- Loading screen element -->
+  <div class="loading-screen" id="loadingScreen">
+    Loading...
+  </div>
+
+  <!-- Your content -->
+  <div id="content" style="display: none;">
+    <!-- Your fetched content will go here -->
+  </div>
+
+  <script>
+    // Simulating a fetch with a delay
+    setTimeout(() => {
+      // Hide the loading screen
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.style.display = 'none';
+
+      // Display the content
+      const content = document.getElementById('content');
+      content.style.display = 'block';
+    }, 2000); // Simulated 2 seconds fetch time
+  </script>
+</body>
+</html>
